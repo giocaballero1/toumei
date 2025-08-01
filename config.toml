@@ -1,0 +1,4 @@
+[ledger]
+path = "toumei.sqlite"
+passphrase = "your_secret"  # Prompt for this later
+schema_version = 1

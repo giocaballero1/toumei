@@ -1,0 +1,28 @@
+[package]
+name = "toumei"  # Snake_case per Rust convention
+version = "0.0.1"
+edition = "2021"
+
+[features]
+default = ["cli"]  # CLI is default for MVP
+cli = []
+sync = ["yrs"]  # Sync feature requires yrs
+tauri = []
+
+[dependencies]
+rusqlite = { version = "0.31", features = ["bundled"] }  # Encrypted SQLite
+yrs = { version = "0.20", optional = true }  # Replaced y-crdt for CRDT sync
+serde = { version = "1.0", features = ["derive"] }  # Serialization
+clap = { version = "4.5", features = ["derive"] }  # CLI parsing
+libsodium-sys = "0.2"  # Crypto
+rust_decimal = "1.35"  # Precise decimals
+chrono = { version = "0.4", features = ["serde"] }
+tracing = "0.1"  # Logging
+toml = "0.8"  # Config parsing
+csv = "1.3"  # CSV exports
+serde_json = "1.0"
+
+[dev-dependencies]
+criterion = "0.5"  # Benchmarking
+proptest = "1.4"  # Property testing
+tempfile = "3.10"  # Temp files
